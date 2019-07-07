@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<script type="text/javascript">
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
+
+if (getCookie("seenNews") === "") {
+	var d = new Date();
+	d.setTime(d.getTime() + (24*60*60*1000));
+	document.cookie = "seenNews=false; expires=" + d.toUTCString() + "; path=/";
+}
+
+{% if page.previous == nil %}
+var d = new Date();
+d.setTime(d.getTime() + (24*60*60*1000));
+document.cookie = "seenNews=true; expires=" + d.toUTCString() + "; path=/";
+{% endif %}
+</script>
+<div class="w3-container w3-teal">
+	<h1>{{ page.date | date_to_string }}: {{ page.title }}</h1>
+	<h5>Made by <a href="/authors/{{page.author}}.html">{{ page.author }}</a></h4>
+</div>
+	<div class="w3-container">
+		<div style="color: white">
+			{{ content }}
+		</div>
+	</div>
+	
+	<footer class="w3-container w3-teal w3-bottom">
+		<ul>
+			{% if page.previous != nil %}
+			<li class="w3-btn w3-round-xlarge w3-white"><a href="/Cubyz{{ page.previous.url }}"><< {{ page.previous.title }}</a></li>
+			{% endif %}
+			{% if page.next != nil %}
+			<li class="w3-btn w3-round-xlarge w3-white"><a href="/Cubyz{{ page.next.url }}">{{ page.next.title }} >></a></li>
+			{% endif %}
+		</ul>
+	</footer>
