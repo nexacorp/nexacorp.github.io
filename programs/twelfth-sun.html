@@ -1,0 +1,44 @@
+---
+layout: default
+title: Programs
+---
+
+<div class="w3-content w3-animate-top">
+	<ul class="w3-ul w3-border w3-center">
+		<li class="w3-bar">
+			<div class="w3-bar-item">
+				<a class="w3-large" href="/programs/twelfth-sun">Twelfth Sun</a><br/>
+				<span>Twelfth Sun is a draconic reactor controller and API with GUI.</span>
+			</div>
+		</li>
+	</ul>
+	<p>Twelfth sun is an API and controller for Draconic Evolution's Reactor. The services/API is featured as
+	a rc service. The current services are <code>ts_core</code> and <code>ts_controller</code>. As you might has
+	guessed, <code>ts_controller</code> is for automatic reactor control and requires
+	<code>ts_core</code> to be enabled. <code>ts_core</code> is a service that triggers events about the
+	reactor state, like <code>field_alert</code>, the events are then listened to by the GUI and <code>ts_controller</code>
+	(if enabled).</p>
+	<p>How to setup:<br/>
+	First you need to have a reactor, then on one of the stabilizer, place an adapter and connect it to the computer.<br/>
+	Then on your output flux gate (near a stabilizer, if not there create it), add an adapter and connect it to the computer<br/>
+	Same for the input flux gate (near an energy injector, if not there create it)</p>
+	<p>
+	Now boot your computer, install OpenOS, install Twelfth Sun and execute the following commands:
+	<pre>
+rc ts_core start
+rc ts_controller start
+	</pre>
+	Once booting the controller it will show you a configuration prompt, do everything indicated on screen which is:<br/>
+	Shutdown reactor (if running)<br/>
+	Set low redstone flux to 100 on input flux gate<br/>
+	Set low redstone flux to 200 on output flux gate<br/>
+	Press any key<br/>
+	Once done, well press any key. Now your reactor just started!<br/>
+	The reactor is automatically managed now and correct energy is inputted/outputted.<br/>
+	
+	And never forget: <s>Have fun!</s> Be carefull!
+	</p>
+	
+	<a href="https://github.com/nexacorp/twelfth-sun">GitHub</a>
+	<a href="/programs/">Back</a>
+</div>
